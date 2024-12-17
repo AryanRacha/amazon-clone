@@ -3,6 +3,7 @@ import {products, getProducts} from "../../data/products.js";
 import formatCurrency from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import {deliveryOptions, getDeliveryOption} from "../../data/deliveryOptions.js";
+import { rendorPaymentSummary } from "./paymentSummary.js";
 
 export function rendorOrderSummary() {
   let cartSummaryHTML = '';
@@ -115,6 +116,8 @@ export function rendorOrderSummary() {
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
 
         container.remove();
+
+        rendorPaymentSummary();
       });
     });
 
@@ -124,6 +127,7 @@ export function rendorOrderSummary() {
         const {productId, deliveryOptionId} = element.dataset;
         updateDeliveryOption(productId, deliveryOptionId);
         rendorOrderSummary();
+        rendorPaymentSummary();
       });
     });
 }
