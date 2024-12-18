@@ -3,9 +3,9 @@ import {products, getProducts} from "../../data/products.js";
 import formatCurrency from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import {deliveryOptions, getDeliveryOption} from "../../data/deliveryOptions.js";
-import { rendorPaymentSummary } from "./paymentSummary.js";
+import { renderPaymentSummary } from "./paymentSummary.js";
 
-export function rendorOrderSummary() {
+export function renderOrderSummary() {
   let cartSummaryHTML = '';
 
   cart.forEach((cartItem) => {
@@ -98,7 +98,7 @@ export function rendorOrderSummary() {
             </div>
           </div>
         </div>
-      `
+      `;
     });
 
     return html;
@@ -117,7 +117,7 @@ export function rendorOrderSummary() {
 
         container.remove();
 
-        rendorPaymentSummary();
+        renderPaymentSummary();
       });
     });
 
@@ -126,10 +126,10 @@ export function rendorOrderSummary() {
       element.addEventListener('click', () => {
         const {productId, deliveryOptionId} = element.dataset;
         updateDeliveryOption(productId, deliveryOptionId);
-        rendorOrderSummary();
-        rendorPaymentSummary();
+        renderOrderSummary();
+        renderPaymentSummary();
       });
     });
 }
 
-rendorOrderSummary();
+renderOrderSummary();
