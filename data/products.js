@@ -98,7 +98,7 @@ export function loadProducts(func) {
       return new Product(productDetails);
     });
 
-    console.log('products have been loaded');
+    console.log('load products');
 
     func();
   });
